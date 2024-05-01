@@ -1,5 +1,5 @@
 <div class="parent">
-    <div class="container">
+    <div class="container" [ngClass]="isRightDivShown ? 'active':'' ">
         <div class="form-container sign-up">
             <form>
                 <h1>Create Account</h1>
@@ -37,12 +37,12 @@
                 <div class="toggle-panel toggle-left">
                     <h1>Welcome Back!</h1>
                     <p>Enter your personal details to use all of site features</p>
-                    <button type="button" class="hidden" id="login">Sign In</button>
+                    <button type="button" class="hidden" id="login" (click)="isRightDivShown = false">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
                     <h1>Hello, Friend!</h1>
                     <p>Register with your personal details to use all of site features</p>
-                    <button type="button" class="hidden" id="register">Sign
+                    <button type="button" class="hidden" id="register" (click)="isRightDivShown = true">Sign
                         Up</button>
                 </div>
             </div>
