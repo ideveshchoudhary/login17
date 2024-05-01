@@ -8,16 +8,5 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent {
 
-  loggedUser: any;
-  constructor(private router: Router) {
-    const localUser = localStorage.getItem('loggedUser');
-    if(localUser != null) {
-      this.loggedUser = JSON.parse(localUser);
-    }
-  }
 
-  onLogoff() {
-    localStorage.removeItem('loggedUser');
-    this.router.navigateByUrl('/login')
-  }
 }
