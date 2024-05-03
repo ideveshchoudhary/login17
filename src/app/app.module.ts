@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
