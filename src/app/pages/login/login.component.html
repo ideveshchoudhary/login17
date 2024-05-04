@@ -29,7 +29,7 @@
                 <input type="email" name="email" [(ngModel)]="loginObj.email" placeholder="Email">
                 <input type="password" name="password" [(ngModel)]="loginObj.password" placeholder="Password">
                 <a href="#">→ Forget Your Password? ←</a>
-                <button>Sign In</button>
+                <button (click)="loginUser()">Sign In</button>
             </form>
         </div>
         <div class="toggle-container">

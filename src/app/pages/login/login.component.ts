@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   signUpObj: SignUpModel = new SignUpModel();
 
   loginObj: LoginModel = new LoginModel();
-
+  constructor(private route: Router) { }
   onRegister() {
     debugger
     const localuser = localStorage.getItem("signinUsers") //key for storing data in localstorage
@@ -20,13 +21,32 @@ export class LoginComponent {
       const storeuser = JSON.parse(localuser);
       storeuser.push(this.signUpObj);
       localStorage.setItem("signinUsers", JSON.stringify(storeuser))
-      alert("Register Succsfull")
     }
     else {
       const storeuser = [];
       storeuser.push(this.signUpObj);
-      localStorage.setItem("signupForm", JSON.stringify(storeuser))
+      localStorage.setItem("signinUsers", JSON.stringify(storeuser))
+      alert("Register Succsfull")
     }
+  }
+
+  loginUser() {
+    debugger
+    const localusers = localStorage.getItem("signinUsers"); //use data from local strg
+    if (localusers != null) {
+      const findDataObj = JSON.parse(localusers)
+      const isUserPresent = findDataObj.find((user: SignUpModel) => user.email == this.loginObj.email && user.password == this.loginObj.password)
+      if (isUserPresent != undefined) {
+        alert("login SuccessFull");
+        localStorage.setItem("signinUsers", JSON.stringify(isUserPresent))
+        this.route.navigateByUrl('/dashboard')
+      }
+      else {
+        alert("wrong details")
+      }
+    }
+
+
   }
 
 }
